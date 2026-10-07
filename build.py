@@ -31,12 +31,12 @@ PHOTOS = {
     "sculptroom":("1772225702317-59fad119ea2e", "Sunlit gallery of marble sculpture beside tall windows", "Tatiana Zhukova", "zp4G2VEW03w"),
 }
 
-def photo(key, cls="photo", w=2400, eager=False, extra=""):
+def photo(key, cls="photo", w=2400, eager=False, extra="", sizes="100vw"):
     pid, alt, *_ = PHOTOS[key]
     loading = 'fetchpriority="high"' if eager else 'loading="lazy"'
     return (f'<div class="{cls}"{extra}><img src="{img(pid, w)}" '
             f'srcset="{img(pid, 900)} 900w, {img(pid, 1600)} 1600w, {img(pid, 2400)} 2400w" '
-            f'sizes="100vw" alt="{alt}" {loading} decoding="async"></div>')
+            f'sizes="{sizes}" alt="{alt}" {loading} decoding="async"></div>')
 
 NAV_L = [("/private-register/", "Private Register"), ("/sell/", "Sell"), ("/family-offices/", "Family Offices")]
 NAV_R = [("/art/", "Art"), ("/sustainability/", "Sustainability"), ("/enquire/", "Enquire")]
@@ -231,7 +231,7 @@ ENTRIES = [
 def journal_grid():
     cards = []
     for key, kicker, title, url in ENTRIES:
-        cards.append(f'<a class="entry" href="{url}" rel="noopener">{photo(key, w=900)}<p class="kicker">{kicker}</p><p class="title">{title}</p></a>')
+        cards.append(f'<a class="entry" href="{url}" rel="noopener">{photo(key, w=900, sizes="(max-width:700px) 100vw, 33vw")}<p class="kicker">{kicker}</p><p class="title">{title}</p></a>')
     return '<div class="journal-grid">' + "".join(cards) + "</div>"
 
 # patch the home page grid in place
