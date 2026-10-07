@@ -13,19 +13,22 @@ def img(pid, w=2400):
 
 # Real photographs, Unsplash licence (free commercial use). Credits live on /credits/.
 PHOTOS = {
-    "apron":    ("1635672033263-a19f27eaefa8", "Long-range jet on a wet apron under an overcast sky", "Niklas Jonasson", "n7pLpkhwXFk"),
-    "dusk":     ("1474302770737-173ee21bab63", "Business jet silhouetted at golden hour", "Chris Leipelt", "6w_dYdazo20"),
-    "hangar":   ("1772161166556-67d412d8ac76", "Business jet parked in a hangar with soft light", "adam roye", "E1oCDZQiIZU"),
-    "cabin":    ("1625513123245-fcb02d69ad12", "Quilted tan leather seats in a private jet cabin", "Yaroslav Muzychenko", "xG-pV6Eu-bE"),
-    "salon":    ("1768346564233-d71f37bd19b6", "Private jet cabin with lounge seating and credenza", "Andy Wang", "ogUyaf8JWA4"),
-    "seats":    ("1772354838120-a78234bf7316", "Cream leather seats in a private jet cabin", "Nitish Suri", "o_fbL-mtkw4"),
-    "library":  ("1728506972831-193841eb2961", "Private library with dark wood shelving and a chandelier", "Anastasia Meraki", "HsHybQQHgWo"),
-    "study":    ("1767277680055-34f1eeec0c26", "Quiet study with desk, chair and bookshelves", "Florian Peeters", "ugkOAFZZlxw"),
-    "painting": ("1779055659853-853441a5d1ec", "Warm-toned abstract painting on a plaster wall", "Alexander Mass", "0VNppGCTsCE"),
-    "studio":   ("1740710543611-80b658171bc3", "Artist's studio with easel and brushes", "Ashe Walker", "Lp7iAR8vp5M"),
-    "wing":     ("1593182440709-4b7b56482c55", "Aircraft wing above a sea of cloud at dawn", "Johny Goerend", "KB9r_hTzyeQ"),
-    "gulf":     ("1684838200815-36eef38f353c", "Long-range business jet on the tarmac", "Niklas Jonasson", "vr7QkWk6bzM"),
-    "wing2":    ("1650732596327-0125c2ca2b3b", "Aircraft wing above the clouds", "Solstice Hannan", "udOjOT4U-Fk"),
+    # Large-cabin aircraft only (ultra-long-range / long-range / super-midsize). No light jets, no airline or military liveries.
+    "hero":      ("1496176744020-6fa84b9bbf15", "Gulfstream long-range jet in black and white, landing gear down", "Alec Cooks", "lFnt4pDaGrU"),
+    "inflight":  ("1657409845150-f31d72aff3a0", "Gulfstream long-range jet on approach under a grey sky", "Chris Leipelt", "72RuhQunZEk"),
+    "falcon":    ("1770334618960-d246fc142297", "Dassault Falcon tri-jet on an Alpine apron, snow-covered peaks behind", "David Syphers", "9vX30eYsBdc"),
+    "alps":      ("1770334618966-7cd65daa8b90", "Dassault Falcon tri-jet on a snowy Alpine runway beneath the mountains", "Rafael Garcin", "Fz2Dx3k3eTY"),
+    "cabin":     ("1768346564210-f382cdf18375", "Cream leather seats in a long-range jet cabin with soft cove lighting", "Andy Wang", "lU1pEjWZzXg"),
+    "salon":     ("1768346564233-d71f37bd19b6", "Wide-body private cabin with lounge chairs and a credenza", "Andy Wang", "ogUyaf8JWA4"),
+    # Old-money interiors
+    "library":   ("1637246662831-353bde8871e8", "Panelled private library with a chandelier and carved staircase", "Daniil Smetanin", "DAE--I2sJQI"),
+    "salonroom": ("1716807335144-33e138f1858a", "Gilded drawing room with a marble statue by a tall window", "Hugo Richard", "P-cJjOSRWAI"),
+    # Art and sustainability: quiet classical sculpture and stone
+    "seated":    ("1760029976977-253e8e11cb48", "Classical marble figure seated in raking sunlight", "Kseniia Zapiatkina", "cl1Tg6L15Gs"),
+    "bust":      ("1639310940358-8f4bf57f3add", "Marble bust on a veined stone plinth", "Anna Hunko", "wUzyCxKWJBA"),
+    "drapery":   ("1789379205322-056dfda0aea7", "Close study of grey drapery folds", "Niklas König", "XYHGBh2LICk"),
+    "columns":   ("1519674921880-e784bc34ebd4", "White marble colonnade in soft daylight", "jacob wall", "J35x4qL0mS0"),
+    "sculptroom":("1772225702317-59fad119ea2e", "Sunlit gallery of marble sculpture beside tall windows", "Tatiana Zhukova", "zp4G2VEW03w"),
 }
 
 def photo(key, cls="photo", w=2400, eager=False, extra=""):
@@ -80,7 +83,7 @@ ORG_LD = {
     "sameAs": ["https://www.linkedin.com/company/theslgco/", "https://www.instagram.com/slg_privatejets/"],
 }
 
-def page(path, title, desc, body, current="", og="apron", ld=None, noindex=False):
+def page(path, title, desc, body, current="", og="hero", ld=None, noindex=False):
     canonical = SITE + path
     ogimg = img(PHOTOS[og][0], 1200) + "&h=630"
     ld_html = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>' if ld else ""
@@ -151,7 +154,7 @@ pages.append(page("/", "SLG | Off-Market Private Jet Advisory for Family Offices
  "Off-market acquisition and sale of long-range private jets for family offices and UHNW principals. Direct mandates only, with art curation and sustainability advice.",
  f'''
 <section class="hero">
-{photo("apron", eager=True)}
+{photo("hero", eager=True)}
 <div class="wrap">
 <p class="label">Private Aviation Advisory</p>
 <h1>Aircraft, acquired<br><span class="it">quietly.</span></h1>
@@ -221,9 +224,9 @@ JOURNAL_GRID
 
 # ---------------- JOURNAL (entries are published on LinkedIn) ----------------
 ENTRIES = [
-    ("gulf", "Market · September 2026", "G600 or Global 6500: reading the demand", "https://www.linkedin.com/feed/update/urn:li:activity:7506387098367832064/"),
-    ("wing2", "Sustainability · August 2026", "Five SAF developments in Europe this summer", "https://www.linkedin.com/feed/update/urn:li:activity:7490104204959576064/"),
-    ("seats", "Interiors", "The psychology of the cabin", "https://www.linkedin.com/feed/update/urn:li:activity:7467814737389645824/"),
+    ("inflight", "Market · September 2026", "G600 or Global 6500: reading the demand", "https://www.linkedin.com/feed/update/urn:li:activity:7506387098367832064/"),
+    ("columns", "Sustainability · August 2026", "Five SAF developments in Europe this summer", "https://www.linkedin.com/feed/update/urn:li:activity:7490104204959576064/"),
+    ("salon", "Interiors", "The psychology of the cabin", "https://www.linkedin.com/feed/update/urn:li:activity:7467814737389645824/"),
 ]
 def journal_grid():
     cards = []
@@ -247,7 +250,7 @@ pages.append(page("/journal/", "Journal | SLG Private Aviation Advisory",
 <p class="lede mb-48">Observations on long-range aircraft, sustainable fuel and the cabin. New entries appear first on LinkedIn.</p>
 {journal_grid()}
 </section>
-''', current="/journal/", og="wing2"))
+''', current="/journal/", og="columns"))
 
 # ---------------- PRIVATE REGISTER ----------------
 REGISTER = [
@@ -289,7 +292,7 @@ pages.append(page("/private-register/", "Off-Market Private Jets for Sale | The 
 <button class="btn gold" type="submit">Request access</button>
 </form>
 </div></section>
-''', current="/private-register/", og="gulf"))
+''', current="/private-register/", og="inflight"))
 
 # ---------------- SELL ----------------
 pages.append(page("/sell/", "Sell Your Private Jet Discreetly, Off-Market | SLG",
@@ -302,7 +305,7 @@ pages.append(page("/sell/", "Sell Your Private Jet Discreetly, Off-Market | SLG"
 <p class="lede">Your aircraft is presented only to buyers we have verified, one conversation at a time. No listing sites, no circulated spec sheets, no public price history.</p>
 <a class="link" href="#valuation" style="align-self:flex-start">Request a confidential valuation</a>
 </div>
-{photo("hangar", eager=True)}
+{photo("falcon", eager=True)}
 </section>
 <section class="rule-top"><div class="wrap section grid3">
 <div><p class="numeral">I</p><h3>Your value stays private</h3><p>An aircraft that sits on public listings loses negotiating ground every week. Off-market, there is no visible days-on-market and no published reductions.</p></div>
@@ -337,7 +340,7 @@ pages.append(page("/sell/", "Sell Your Private Jet Discreetly, Off-Market | SLG"
 <button class="btn" type="submit">Request valuation</button>
 </form>
 </section>
-''', current="/sell/", og="hangar"))
+''', current="/sell/", og="falcon"))
 
 # ---------------- FAMILY OFFICES ----------------
 pages.append(page("/family-offices/", "Private Aviation Advisory for Family Offices | SLG",
@@ -364,7 +367,7 @@ pages.append(page("/family-offices/", "Private Aviation Advisory for Family Offi
 <article><h3>Stewardship</h3><p>SAF strategy and emissions reporting aligned with the family's mandate.</p></article>
 </div></section>
 <section class="wrap section two">
-{photo("study", w=1600)}
+{photo("salonroom", w=1600)}
 <div>
 <p class="label">What you can expect</p>
 <ul class="ticks">
@@ -396,9 +399,9 @@ pages.append(page("/art/", "Art Curation for Private Jet Interiors | SLG",
 </section>
 <section class="wrap" style="padding-bottom:128px">
 <div class="gallery">
-{photo("painting", cls="photo tall", w=1600)}
-{photo("studio", w=1200)}
-{photo("salon", w=1200)}
+{photo("seated", cls="photo tall", w=1600)}
+{photo("bust", w=1200)}
+{photo("drapery", w=1200)}
 </div>
 </section>
 <section class="band-linen"><div class="wrap section tight">
@@ -413,14 +416,14 @@ pages.append(page("/art/", "Art Curation for Private Jet Interiors | SLG",
 <p class="serif" style="flex:2 1 560px;font-size:clamp(28px,3.4vw,46px);line-height:1.3">Considered from the first inspection, not added after delivery. Art changes which aircraft is right, and how its cabin should be finished.</p>
 <a class="link" href="/enquire/">Discuss a cabin</a>
 </section>
-''', current="/art/", og="painting"))
+''', current="/art/", og="seated"))
 
 # ---------------- SUSTAINABILITY ----------------
 pages.append(page("/sustainability/", "Sustainable Aviation Fuel (SAF) Advisory for Private Jets | SLG",
  "Practical sustainability advice for private aviation: efficient aircraft choices, SAF access and honest emissions reporting for family offices.",
  f'''
 <section class="split">
-{photo("wing", eager=True)}
+{photo("sculptroom", eager=True)}
 <div class="text" style="padding-left:64px;padding-right:max(var(--gutter),calc((100% - var(--max))/2 + var(--gutter)))">
 <p class="label">Sustainability &amp; SAF</p>
 <h1>Responsibility, <span class="it">without ceremony.</span></h1>
@@ -442,14 +445,14 @@ pages.append(page("/sustainability/", "Sustainable Aviation Fuel (SAF) Advisory 
 <p class="body mb-48">A short assessment of your current aircraft and fuel options.</p>
 <a class="btn" href="/enquire/">Enquire</a>
 </section>
-''', current="/sustainability/", og="wing"))
+''', current="/sustainability/", og="sculptroom"))
 
 # ---------------- CHARTER ----------------
 pages.append(page("/charter/", "Private Jet Charter for Principals and Family Offices | SLG",
  "Private jet charter arranged discreetly for principals, families and executives, from the season's events to board meetings. Vetted operators only.",
  f'''
 <section class="hero">
-{photo("dusk", eager=True)}
+{photo("alps", eager=True)}
 <div class="wrap">
 <p class="label">Charter</p>
 <h1>Wherever the season <span class="it">leads.</span></h1>
@@ -463,7 +466,7 @@ pages.append(page("/charter/", "Private Jet Charter for Principals and Family Of
 <div><p class="numeral">III</p><h3>The family</h3><p>Children, staff, pets and luggage planned for, with cabin preferences remembered for next time.</p></div>
 </section>
 <section class="rule-top"><div class="wrap section two">
-{photo("seats", w=1600)}
+{photo("salon", w=1600)}
 <div>
 <p class="label">Standards</p>
 <ul class="ticks">
@@ -479,7 +482,7 @@ pages.append(page("/charter/", "Private Jet Charter for Principals and Family Of
 <p class="body mb-48">A quotation follows the same day for most itineraries.</p>
 <a class="btn" href="/enquire/?intent=charter">Request a charter</a>
 </section>
-''', current="/charter/", og="dusk"))
+''', current="/charter/", og="alps"))
 
 # ---------------- ENQUIRE ----------------
 pages.append(page("/enquire/", "Enquire | SLG Private Aviation Advisory",
