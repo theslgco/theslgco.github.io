@@ -158,9 +158,8 @@ p{margin:0}
 
 /* Gallery */
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
-.gallery .tall{grid-row:span 2;min-height:820px}
-.gallery .photo{min-height:398px}
-@media (max-width:720px){.gallery .tall{min-height:520px}}
+.gallery .photo,.gallery .tall{min-height:640px}
+@media (max-width:720px){.gallery .photo,.gallery .tall{min-height:460px}}
 
 /* Forms */
 .form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 32px}
