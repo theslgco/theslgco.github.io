@@ -622,7 +622,7 @@ with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8") as f:
     f.write("</urlset>\n")
 with open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8") as f:
     f.write(f"User-agent: *\nAllow: /\nDisallow: /thank-you/\n\nSitemap: {SITE}/sitemap.xml\n")
-if os.environ.get("SLG_CUSTOM_DOMAIN"):
+if not os.environ.get("SLG_NO_CUSTOM_DOMAIN"):
   with open(os.path.join(ROOT, "CNAME"), "w") as f:
     f.write("www.theslg.co\n")
 open(os.path.join(ROOT, ".nojekyll"), "w").close()
