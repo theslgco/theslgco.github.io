@@ -183,10 +183,10 @@ pages.append(page("/", "SLG | Off-Market Private Jet Advisory for Family Offices
 <a class="link" href="/private-register/">Request access</a>
 </div>
 <div class="register-teaser">
-<div class="row"><span class="cat">Ultra-long-range</span><span class="meta">2023 · under 700 hours</span></div>
-<div class="row"><span class="cat">Long-range</span><span class="meta">2021 · under 1,700 hours</span></div>
-<div class="row"><span class="cat">Long-range</span><span class="meta">2016 · connectivity fitted</span></div>
-<div class="row"><span class="cat">Super-midsize</span><span class="meta">2015 · Asia</span></div>
+<div class="row"><span class="cat">Global 7500</span><span class="meta">2023 · under 700 hours</span></div>
+<div class="row"><span class="cat">G650ER</span><span class="meta">2017 · Block 3</span></div>
+<div class="row"><span class="cat">Global 6000</span><span class="meta">2016 · one owner</span></div>
+<div class="row"><span class="cat">Lineage 1000</span><span class="meta">2008 · 19 seats</span></div>
 </div>
 </div></section>
 
@@ -253,27 +253,51 @@ pages.append(page("/journal/", "Journal | SLG Private Aviation Advisory",
 ''', current="/journal/", og="columns"))
 
 # ---------------- PRIVATE REGISTER ----------------
+# Off-market sale only. Mirrors Sale rows of the SLG Off-Market Deal Tracker.
+# (Category, Model, Year, Profile, Region). Never publish prices, serials or seller names.
 REGISTER = [
-    ("Ultra-long-range", "2023", "Under 700 hours · recent 36-month inspection", "Asia-Pacific"),
-    ("Ultra-long-range", "2017", "Large cabin, extended range", "Middle East"),
-    ("Long-range", "2021", "Under 1,700 hours", "Asia"),
-    ("Long-range", "2016", "European maintenance history · connectivity", "Asia"),
-    ("Bizliner", "2008", "Airliner-class cabin", "On request"),
-    ("Super-midsize", "2015", "Single-owner history", "Asia"),
+    ("Ultra-long-range", "Bombardier Global 7500", "2023", "Under 700 hours · 36-month inspection July 2026", "Asia-Pacific"),
+    ("Ultra-long-range", "Gulfstream G650ER", "2017", "Under 1,700 hours · Block 3 · Ka-band", "Middle East"),
+    ("Long-range", "Bombardier Global 6000", "2016", "One owner since new · under 1,600 hours", "Asia"),
+    ("Long-range", "Bombardier Global XRS", "2009", "180-month inspection 2024 · Ka-band", "Asia"),
+    ("Bizliner", "Embraer Lineage 1000", "2008", "19 seats · one owner since new", "On request"),
 ]
-rows = "".join(f"<tr><td>{a}</td><td>{b}</td><td>{c}</td><td>{d}</td></tr>" for a, b, c, d in REGISTER)
+rows = "".join(f"<tr><td>{a}</td><td>{m}</td><td>{b}</td><td>{c}</td><td>{d}</td></tr>" for a, m, b, c, d in REGISTER)
+
+# Mirrors Acquisition rows of the Deal Tracker: what our buyers are looking for.
+# (Category, Model, Year, Requirement)
+WANTED = [
+    ("Long-range", "Bombardier Global 6500", "Any", "For a direct buyer"),
+    ("Long-range", "Bombardier Global 6000", "Any", "Off-market preferred"),
+    ("Long-range", "Bombardier Global 5000", "2011–2012", "For a direct buyer"),
+    ("Long-range", "Bombardier Global XRS", "Any", "Two buyers"),
+    ("Large cabin", "Bombardier Challenger 605", "Any", "For a direct buyer"),
+    ("Large cabin", "Embraer Legacy 650", "2014 or newer", "For a direct buyer"),
+    ("Super-midsize", "Embraer Praetor 600", "Any", "For a direct buyer"),
+    ("Light", "Embraer Phenom 300E", "Any", "Two buyers, Europe"),
+    ("Bizliner", "Boeing BBJ 737 MAX 8", "2018–2020", "For a direct buyer"),
+    ("Bizliner", "Airbus ACJ320 / ACJ321", "Any", "For a direct buyer"),
+]
+wanted_rows = "".join(f"<tr><td>{a}</td><td>{m}</td><td>{b}</td><td>{c}</td></tr>" for a, m, b, c in WANTED)
 pages.append(page("/private-register/", "Off-Market Private Jets for Sale | The Private Register | SLG",
  "Off-market long-range private jets offered privately by their owners. Details released under NDA to verified principals and their advisers.",
  f'''
 <section class="wrap section">
 <p class="label">Off-market</p>
 <h1 class="mb-48">The Private <span class="it">Register</span></h1>
-<p class="lede">Aircraft offered privately by their owners, never advertised. Each is held under a direct mandate. Type, serial, records and terms are released under NDA to verified principals and their appointed advisers.</p>
+<p class="lede">Aircraft offered privately, never advertised. Each comes from the owner or the owner's direct representative. Serial, records and terms are released under NDA to verified principals and their appointed advisers.</p>
 </section>
-<section class="wrap" style="padding-bottom:128px">
-<table class="register"><thead><tr><th scope="col">Category</th><th scope="col">Year</th><th scope="col">Profile</th><th scope="col">Region</th></tr></thead>
+<section class="wrap">
+<h2 class="mb-24">Available off-market</h2>
+<table class="register"><thead><tr><th scope="col">Category</th><th scope="col">Model</th><th scope="col">Year</th><th scope="col">Profile</th><th scope="col">Region</th></tr></thead>
 <tbody>{rows}</tbody></table>
-<p class="small mt-24">Register updated monthly. Aircraft withdrawn from sale are removed without notice.</p>
+<p class="small mt-24">Aircraft withdrawn from sale are removed without notice.</p>
+</section>
+<section class="wrap" style="padding-top:96px;padding-bottom:128px">
+<h2 class="mb-24">Wanted</h2>
+<p class="body mb-24">Our buyers are looking for the aircraft below. If you own one and would consider a quiet sale, <a href="/sell/">speak to us in confidence</a>.</p>
+<table class="register"><thead><tr><th scope="col">Category</th><th scope="col">Model</th><th scope="col">Year</th><th scope="col">Requirement</th></tr></thead>
+<tbody>{wanted_rows}</tbody></table>
 </section>
 <section class="dark"><div class="wrap section two top">
 <div>
