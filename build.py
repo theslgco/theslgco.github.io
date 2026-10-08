@@ -254,15 +254,15 @@ pages.append(page("/journal/", "Journal | SLG Private Aviation Advisory",
 
 # ---------------- PRIVATE REGISTER ----------------
 # Off-market sale only. Mirrors Sale rows of the SLG Off-Market Deal Tracker.
-# (Category, Model, Year, Profile, Region). Never publish prices, serials or seller names.
+# (Category, Model, Year, Profile). Never publish prices, serials, seller names or location (released after LOI).
 REGISTER = [
-    ("Ultra-long-range", "Bombardier Global 7500", "2023", "Under 700 hours · 36-month inspection July 2026", "Asia-Pacific"),
-    ("Ultra-long-range", "Gulfstream G650ER", "2017", "Under 1,700 hours · Block 3 · Ka-band", "Middle East"),
-    ("Long-range", "Bombardier Global 6000", "2016", "One owner since new · under 1,600 hours", "Asia"),
-    ("Long-range", "Bombardier Global XRS", "2009", "180-month inspection 2024 · Ka-band", "Asia"),
-    ("Bizliner", "Embraer Lineage 1000", "2008", "19 seats · one owner since new", "On request"),
+    ("Ultra-long-range", "Bombardier Global 7500", "2023", "Under 700 hours · 36-month inspection July 2026"),
+    ("Ultra-long-range", "Gulfstream G650ER", "2017", "Under 1,700 hours · Block 3 · Ka-band"),
+    ("Long-range", "Bombardier Global 6000", "2016", "One owner since new · under 1,600 hours"),
+    ("Long-range", "Bombardier Global XRS", "2009", "180-month inspection 2024 · Ka-band"),
+    ("Bizliner", "Embraer Lineage 1000", "2008", "19 seats · one owner since new"),
 ]
-rows = "".join(f"<tr><td>{a}</td><td>{m}</td><td>{b}</td><td>{c}</td><td>{d}</td></tr>" for a, m, b, c, d in REGISTER)
+rows = "".join(f"<tr><td>{a}</td><td>{m}</td><td>{b}</td><td>{c}</td></tr>" for a, m, b, c in REGISTER)
 
 # Mirrors Acquisition rows of the Deal Tracker: what our buyers are looking for.
 # (Category, Model, Year, Requirement)
@@ -285,11 +285,11 @@ pages.append(page("/private-register/", "Off-Market Private Jets for Sale | The 
 <section class="wrap section">
 <p class="label">Off-market</p>
 <h1 class="mb-48">The Private <span class="it">Register</span></h1>
-<p class="lede">Aircraft offered privately, never advertised. Each comes from the owner or the owner's direct representative. Serial, records and terms are released under NDA to verified principals and their appointed advisers.</p>
+<p class="lede">Aircraft offered privately, never advertised. Each comes from the owner or the owner's direct representative. Serial, location, records and terms are released under NDA to verified principals and their appointed advisers.</p>
 </section>
 <section class="wrap">
 <h2 class="mb-24">Available off-market</h2>
-<table class="register"><thead><tr><th scope="col">Category</th><th scope="col">Model</th><th scope="col">Year</th><th scope="col">Profile</th><th scope="col">Region</th></tr></thead>
+<table class="register"><thead><tr><th scope="col">Category</th><th scope="col">Model</th><th scope="col">Year</th><th scope="col">Profile</th></tr></thead>
 <tbody>{rows}</tbody></table>
 <p class="small mt-24">Aircraft withdrawn from sale are removed without notice.</p>
 </section>
