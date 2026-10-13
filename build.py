@@ -185,7 +185,8 @@ pages.append(page("/", "SLG | Off-Market Private Jet Advisory for Family Offices
 <div class="register-teaser">
 <div class="row"><span class="cat">Global 7500</span><span class="meta">2023 · under 700 hours</span></div>
 <div class="row"><span class="cat">G650ER</span><span class="meta">2017 · Block 3</span></div>
-<div class="row"><span class="cat">Global 6000</span><span class="meta">2016 · one owner</span></div>
+<div class="row"><span class="cat">Global 6500</span><span class="meta">2022 · 1,400 hours</span></div>
+<div class="row"><span class="cat">Challenger 3500</span><span class="meta">2023 · one owner</span></div>
 <div class="row"><span class="cat">Lineage 1000</span><span class="meta">2008 · 19 seats</span></div>
 </div>
 </div></section>
