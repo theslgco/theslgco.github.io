@@ -258,8 +258,9 @@ pages.append(page("/journal/", "Journal | SLG Private Aviation Advisory",
 REGISTER = [
     ("Ultra-long-range", "Bombardier Global 7500", "2023", "Under 700 hours · 36-month inspection July 2026"),
     ("Ultra-long-range", "Gulfstream G650ER", "2017", "Under 1,700 hours · Block 3 · Ka-band"),
-    ("Long-range", "Bombardier Global 6000", "2016", "One owner since new · under 1,600 hours"),
+    ("Long-range", "Bombardier Global 6500", "2022", "1,400 hours · warranty support · Ka-band · 13 seats"),
     ("Long-range", "Bombardier Global XRS", "2009", "180-month inspection 2024 · Ka-band"),
+    ("Super-midsize", "Bombardier Challenger 3500", "2023", "Under 800 hours · one owner · fresh 36-month · Ka-band"),
     ("Bizliner", "Embraer Lineage 1000", "2008", "19 seats · one owner since new"),
 ]
 rows = "".join(f"<tr><td>{a}</td><td>{m}</td><td>{b}</td><td>{c}</td></tr>" for a, m, b, c in REGISTER)
@@ -276,7 +277,7 @@ WANTED = [
     ("Super-midsize", "Embraer Praetor 600", "Any", "For a direct buyer"),
     ("Light", "Embraer Phenom 300E", "Any", "Two buyers, Europe"),
     ("Bizliner", "Boeing BBJ 737 MAX 8", "2018–2020", "For a direct buyer"),
-    ("Bizliner", "Airbus ACJ320 / ACJ321", "Any", "For a direct buyer"),
+    ("Super-midsize", "Bombardier Challenger 3500", "2025 or newer", "For a direct buyer"),
 ]
 wanted_rows = "".join(f"<tr><td>{a}</td><td>{m}</td><td>{b}</td><td>{c}</td></tr>" for a, m, b, c in WANTED)
 pages.append(page("/private-register/", "Off-Market Private Jets for Sale | The Private Register | SLG",
