@@ -187,6 +187,7 @@ pages.append(page("/", "SLG | Off Market Private Jet Advisory for Family Offices
 <div class="row"><span class="cat">G650ER</span><span class="meta">2019 · three zones</span></div>
 <div class="row"><span class="cat">G650ER</span><span class="meta">2017 · Block 3</span></div>
 <div class="row"><span class="cat">Falcon 2000LXS</span><span class="meta">2022 · one owner</span></div>
+<div class="row"><span class="cat">Challenger 605</span><span class="meta">2015 · 11 seats</span></div>
 </div>
 </div></section>
 
@@ -260,6 +261,7 @@ REGISTER = [
     ("Ultra-long-range", "Gulfstream G650ER", "2019", "2,000 hours · HUD · Ka-band · 13 seats, three zones"),
     ("Ultra-long-range", "Gulfstream G650ER", "2017", "Under 1,700 hours · Block 3 · Ka-band · 14 seats"),
     ("Large cabin", "Dassault Falcon 2000LXS", "2022", "One owner since new · hangared · Ka-band · 10 seats"),
+    ("Large cabin", "Bombardier Challenger 605", "2015", "Under 2,900 hours · 96-month inspection 2023 · 11 seats"),
 ]
 rows = "".join(f"<tr><td>{a}</td><td>{m}</td><td>{b}</td><td>{c}</td></tr>" for a, m, b, c in REGISTER)
 
