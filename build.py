@@ -78,7 +78,7 @@ FOOTER = f'''<footer class="site-footer">
 ORG_LD = {
     "@context": "https://schema.org", "@type": "Organization", "name": "SLG", "legalName": "SLG Global LLC",
     "url": SITE + "/", "email": EMAIL, "logo": SITE + "/assets/img/favicon.svg",
-    "description": "Private aviation advisory for family offices and UHNW principals: off-market aircraft acquisition and sale, charter, art curation for cabins and sustainability advice.",
+    "description": "Private aviation advisory for family offices and UHNW principals: off market aircraft acquisition and sale, charter, art curation for cabins and sustainability advice.",
     "founder": {"@type": "Person", "name": "Tuğçe Tekin", "url": "https://www.linkedin.com/in/tugce-tekin/"},
     "sameAs": ["https://www.linkedin.com/company/theslgco/", "https://www.instagram.com/slg_privatejets/"],
 }
@@ -150,15 +150,15 @@ def consent(text):
 pages = []
 
 # ---------------- HOME ----------------
-pages.append(page("/", "SLG | Off-Market Private Jet Advisory for Family Offices",
- "Off-market acquisition and sale of long-range private jets for family offices and UHNW principals. Direct mandates only, with art curation and sustainability advice.",
+pages.append(page("/", "SLG | Off Market Private Jet Advisory for Family Offices",
+ "Off market acquisition and sale of long-range private jets for family offices and UHNW principals., with art curation and sustainability advice.",
  f'''
 <section class="hero">
 {photo("hero", eager=True)}
 <div class="wrap">
 <p class="label">Private Aviation Advisory</p>
 <h1>Aircraft, acquired<br><span class="it">quietly.</span></h1>
-<p class="lede">Off-market acquisition and sale of long-range jets for family offices and their principals. Direct mandates only.</p>
+<p class="lede">Off market acquisition and sale of long-range jets for family offices and their principals. Discreet introductions only.</p>
 <div class="actions"><a class="link" href="/enquire/">Request a private conversation</a><a class="link soft" href="/sell/">Sell discreetly</a></div>
 </div>
 </section>
@@ -170,7 +170,7 @@ pages.append(page("/", "SLG | Off-Market Private Jet Advisory for Family Offices
 </section>
 
 <section class="rule-top"><div class="wrap columns">
-<article><p class="numeral">I</p><h3>Acquisition &amp; Sale</h3><p>Long-range and ultra-long-range aircraft sourced directly from owners and their mandates. Verified serials, clean title, one point of contact.</p><a class="link" href="/private-register/">The Private Register</a></article>
+<article><p class="numeral">I</p><h3>Acquisition &amp; Sale</h3><p>Long-range and ultra-long-range aircraft sourced privately, never from public listings. Verified serials, clean title, one point of contact.</p><a class="link" href="/private-register/">The Private Register</a></article>
 <article><p class="numeral">II</p><h3>Art &amp; Interiors</h3><p>Collection-grade works curated for the cabin, with artists, interior studios and certified installers. Considered from first inspection.</p><a class="link" href="/art/">Art &amp; Interiors</a></article>
 <article><p class="numeral">III</p><h3>Sustainability</h3><p>SAF access, efficiency-led fleet choices and emissions reporting a family office can stand behind.</p><a class="link" href="/sustainability/">Sustainability &amp; SAF</a></article>
 </div></section>
@@ -184,10 +184,9 @@ pages.append(page("/", "SLG | Off-Market Private Jet Advisory for Family Offices
 </div>
 <div class="register-teaser">
 <div class="row"><span class="cat">Global 7500</span><span class="meta">2023 · under 700 hours</span></div>
+<div class="row"><span class="cat">G650ER</span><span class="meta">2019 · three zones</span></div>
 <div class="row"><span class="cat">G650ER</span><span class="meta">2017 · Block 3</span></div>
-<div class="row"><span class="cat">Global 6500</span><span class="meta">2022 · 1,400 hours</span></div>
-<div class="row"><span class="cat">Challenger 3500</span><span class="meta">2023 · one owner</span></div>
-<div class="row"><span class="cat">Lineage 1000</span><span class="meta">2008 · 19 seats</span></div>
+<div class="row"><span class="cat">Falcon 2000LXS</span><span class="meta">2022 · one owner</span></div>
 </div>
 </div></section>
 
@@ -195,7 +194,7 @@ pages.append(page("/", "SLG | Off-Market Private Jet Advisory for Family Offices
 <p class="label muted">How a transaction proceeds</p>
 <ol class="steps">
 <li><p class="t">Introduction</p><p>A private conversation with the principal or their office. No public listing, no circulation.</p></li>
-<li><p class="t">Confidentiality</p><p>Mutual NDA and a written mandate before any specification is shared.</p></li>
+<li><p class="t">Confidentiality</p><p>Mutual NDA in place before any specification is shared.</p></li>
 <li><p class="t">Verification</p><p>Serial, title, records and airworthiness confirmed. KYC and sanctions screening on both sides.</p></li>
 <li><p class="t">Completion</p><p>LOI, escrow deposit, pre-purchase inspection and closing, coordinated with your counsel.</p></li>
 </ol>
@@ -206,7 +205,7 @@ pages.append(page("/", "SLG | Off-Market Private Jet Advisory for Family Offices
 <div>
 <p class="label">For family offices</p>
 <h2 class="big mb-24">One adviser, for the aircraft and everything it carries.</h2>
-<p class="lede measure mb-48">For family offices, holdings, private equity and wealth managers acting for principals. We work on mandate only, never through broker chains.</p>
+<p class="lede measure mb-48">For family offices, holdings, private equity and wealth managers acting for principals. We work privately and never through broker chains.</p>
 <a class="link" href="/family-offices/">Our approach</a>
 </div>
 </div></section>
@@ -254,43 +253,36 @@ pages.append(page("/journal/", "Journal | SLG Private Aviation Advisory",
 ''', current="/journal/", og="columns"))
 
 # ---------------- PRIVATE REGISTER ----------------
-# Off-market sale only. Mirrors Sale rows of the SLG Off-Market Deal Tracker.
+# Off market sale only. Mirrors active Sale rows of Master CRM > Deals.
 # (Category, Model, Year, Profile). Never publish prices, serials, seller names or location (released after LOI).
 REGISTER = [
     ("Ultra-long-range", "Bombardier Global 7500", "2023", "Under 700 hours · 36-month inspection July 2026"),
-    ("Ultra-long-range", "Gulfstream G650ER", "2017", "Under 1,700 hours · Block 3 · Ka-band"),
-    ("Long-range", "Bombardier Global 6500", "2022", "1,400 hours · warranty support · Ka-band · 13 seats"),
-    ("Long-range", "Bombardier Global XRS", "2009", "180-month inspection 2024 · Ka-band"),
-    ("Super-midsize", "Bombardier Challenger 3500", "2023", "Under 800 hours · one owner · fresh 36-month · Ka-band"),
-    ("Bizliner", "Embraer Lineage 1000", "2008", "19 seats · one owner since new"),
+    ("Ultra-long-range", "Gulfstream G650ER", "2019", "2,000 hours · HUD · Ka-band · 13 seats, three zones"),
+    ("Ultra-long-range", "Gulfstream G650ER", "2017", "Under 1,700 hours · Block 3 · Ka-band · 14 seats"),
+    ("Large cabin", "Dassault Falcon 2000LXS", "2022", "One owner since new · hangared · Ka-band · 10 seats"),
 ]
 rows = "".join(f"<tr><td>{a}</td><td>{m}</td><td>{b}</td><td>{c}</td></tr>" for a, m, b, c in REGISTER)
 
-# Mirrors Acquisition rows of the Deal Tracker: what our buyers are looking for.
+# Mirrors Acquisition rows of Master CRM > Deals: what our buyers are looking for.
 # (Category, Model, Year, Requirement)
 WANTED = [
-    ("Long-range", "Bombardier Global 6500", "Any", "For a direct buyer"),
-    ("Long-range", "Bombardier Global 6000", "Any", "Off-market preferred"),
-    ("Long-range", "Bombardier Global 5000", "2011–2012", "For a direct buyer"),
-    ("Long-range", "Bombardier Global XRS", "Any", "Two buyers"),
-    ("Large cabin", "Bombardier Challenger 605", "Any", "For a direct buyer"),
-    ("Large cabin", "Embraer Legacy 650", "2014 or newer", "For a direct buyer"),
-    ("Super-midsize", "Embraer Praetor 600", "Any", "For a direct buyer"),
-    ("Light", "Embraer Phenom 300E", "Any", "Two buyers, Europe"),
-    ("Bizliner", "Boeing BBJ 737 MAX 8", "2018–2020", "For a direct buyer"),
-    ("Super-midsize", "Bombardier Challenger 3500", "2025 or newer", "For a direct buyer"),
+    ("Long-range", "Bombardier Global XRS", "Any", "For a principal"),
+    ("Large cabin", "Bombardier Challenger 605", "2015 or newer", "Two principals"),
+    ("Large cabin", "Embraer Legacy 650", "2014 or newer", "For a principal"),
+    ("Super-midsize", "Bombardier Challenger 3500", "2023 or newer", "Two principals"),
+    ("Light", "Embraer Phenom 300", "Any", "Two principals"),
 ]
 wanted_rows = "".join(f"<tr><td>{a}</td><td>{m}</td><td>{b}</td><td>{c}</td></tr>" for a, m, b, c in WANTED)
-pages.append(page("/private-register/", "Off-Market Private Jets for Sale | The Private Register | SLG",
- "Off-market long-range private jets offered privately by their owners. Details released under NDA to verified principals and their advisers.",
+pages.append(page("/private-register/", "Off Market Private Jets for Sale | The Private Register | SLG",
+ "Off market long-range private jets offered privately by their owners. Details released under NDA to verified principals and their advisers.",
  f'''
 <section class="wrap section">
-<p class="label">Off-market</p>
+<p class="label">Off market</p>
 <h1 class="mb-48">The Private <span class="it">Register</span></h1>
-<p class="lede">Aircraft offered privately, never advertised. Each comes from the owner or the owner's direct representative. Serial, location, records and terms are released under NDA to verified principals and their appointed advisers.</p>
+<p class="lede">Aircraft offered privately, never advertised. Basic details are shared first and specifications follow under NDA. Serial, registration and location are released only after a letter of intent.</p>
 </section>
 <section class="wrap">
-<h2 class="mb-24">Available off-market</h2>
+<h2 class="mb-24">Available off market</h2>
 <table class="register"><thead><tr><th scope="col">Category</th><th scope="col">Model</th><th scope="col">Year</th><th scope="col">Profile</th></tr></thead>
 <tbody>{rows}</tbody></table>
 <p class="small mt-24">Aircraft withdrawn from sale are removed without notice.</p>
@@ -321,7 +313,7 @@ pages.append(page("/private-register/", "Off-Market Private Jets for Sale | The 
 ''', current="/private-register/", og="inflight"))
 
 # ---------------- SELL ----------------
-pages.append(page("/sell/", "Sell Your Private Jet Discreetly, Off-Market | SLG",
+pages.append(page("/sell/", "Sell Your Private Jet Discreetly, Off Market | SLG",
  "Sell your aircraft without appearing on the market. Presented only to verified principals, one conversation at a time. Confidential valuation.",
  f'''
 <section class="split">
@@ -334,14 +326,14 @@ pages.append(page("/sell/", "Sell Your Private Jet Discreetly, Off-Market | SLG"
 {photo("falcon", eager=True)}
 </section>
 <section class="rule-top"><div class="wrap section grid3">
-<div><p class="numeral">I</p><h3>Your value stays private</h3><p>An aircraft that sits on public listings loses negotiating ground every week. Off-market, there is no visible days-on-market and no published reductions.</p></div>
+<div><p class="numeral">I</p><h3>Your value stays private</h3><p>An aircraft that sits on public listings loses negotiating ground every week. Off market, there is no visible days on market and no published reductions.</p></div>
 <div><p class="numeral">II</p><h3>Only real buyers</h3><p>We introduce principals with a confirmed budget and a defined mission, not chains of intermediaries holding the same request.</p></div>
 <div><p class="numeral">III</p><h3>One adviser</h3><p>Valuation, buyer vetting, LOI, inspection and closing, coordinated by one person on your behalf, with your counsel.</p></div>
 </div></section>
 <section class="band-linen"><div class="wrap section tight two top">
 <h2 class="big">From first call to completion.</h2>
 <ol class="timeline">
-<li><span class="when">Week 1</span><span>Private conversation, NDA and written mandate. Records reviewed; valuation agreed.</span></li>
+<li><span class="when">Week 1</span><span>Private conversation, NDA and written agreement. Records reviewed; valuation agreed.</span></li>
 <li><span class="when">Weeks 2–4</span><span>Discreet introductions to vetted principals. Only you approve who sees what.</span></li>
 <li><span class="when">LOI</span><span>Letter of intent and refundable deposit into escrow.</span></li>
 <li><span class="when">Closing</span><span>Pre-purchase inspection, purchase agreement and delivery, typically six to ten weeks from LOI.</span></li>
@@ -370,7 +362,7 @@ pages.append(page("/sell/", "Sell Your Private Jet Discreetly, Off-Market | SLG"
 
 # ---------------- FAMILY OFFICES ----------------
 pages.append(page("/family-offices/", "Private Aviation Advisory for Family Offices | SLG",
- "Aviation advice for family offices, holdings, private equity and wealth managers: acquisition, disposal, cabin art and SAF strategy, on mandate only.",
+ "Aviation advice for family offices, holdings, private equity and wealth managers: acquisition, disposal, cabin art and SAF strategy, always privately.",
  f'''
 <section class="hero">
 {photo("library", eager=True)}
@@ -382,22 +374,22 @@ pages.append(page("/family-offices/", "Private Aviation Advisory for Family Offi
 <section class="wrap section two top">
 <p class="serif" style="font-size:clamp(28px,3vw,40px);line-height:1.3">An aircraft is a capital asset, a working tool and, increasingly, a place where a collection is shown. We advise on all three, with one point of contact and no conflicting loyalties.</p>
 <div class="body" style="display:flex;flex-direction:column;gap:20px">
-<p>We act for family offices, holding companies, private equity and the wealth managers who represent principals. Mandates are written, fees are agreed in advance, and we never work through chains of brokers.</p>
+<p>We act for family offices, holding companies, private equity and the wealth managers who represent principals. Agreements are written, fees are agreed in advance, and we never work through chains of brokers.</p>
 <p>Everything we share is on a need-to-know basis, under NDA, with KYC and sanctions screening completed before any introduction.</p>
 </div>
 </section>
 <section class="rule-top" style="border-bottom:1px solid var(--rule)"><div class="wrap columns">
-<article><h3>Acquisition</h3><p>Mission analysis, off-market search, verification, negotiation and closing.</p></article>
+<article><h3>Acquisition</h3><p>Mission analysis, off market search, verification, negotiation and closing.</p></article>
 <article><h3>Disposal</h3><p>Quiet sale of an existing aircraft or a fleet renewal, timed with the replacement.</p></article>
 <article><h3>Collection</h3><p>Art for the cabin, drawn from or added to the family's collection.</p></article>
-<article><h3>Stewardship</h3><p>SAF strategy and emissions reporting aligned with the family's mandate.</p></article>
+<article><h3>Stewardship</h3><p>SAF strategy and emissions reporting aligned with the family's values.</p></article>
 </div></section>
 <section class="wrap section two">
 {photo("salonroom", w=1600)}
 <div>
 <p class="label">What you can expect</p>
 <ul class="ticks">
-<li>A written mandate and fee before work begins</li>
+<li>A written agreement and fee before work begins</li>
 <li>Direct access to owners and buyers, never a broker chain</li>
 <li>Serial, title and records verified before you see a price</li>
 <li>Coordination with your counsel, tax adviser and operator</li>
