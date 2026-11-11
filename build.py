@@ -9,6 +9,12 @@ EMAIL = "info@theslg.co"
 FORM_ACTION = f"https://formsubmit.co/{EMAIL}"
 
 def img(pid, w=2400):
+    if pid.startswith("commons:"):
+        # Wikimedia Commons serves fixed thumbnail widths only
+        path = pid[len("commons:"):]
+        f = path.split("/")[-1]
+        cw = 960 if w <= 960 else (1280 if w <= 1600 else 1920)
+        return f"https://upload.wikimedia.org/wikipedia/commons/thumb/{path}/{cw}px-{f}"
     return f"https://images.unsplash.com/photo-{pid}?w={w}&q=80&auto=format&fit=crop"
 
 # Real photographs, Unsplash licence (free commercial use). Credits live on /credits/.
@@ -20,6 +26,9 @@ PHOTOS = {
     "alps":      ("1770334618966-7cd65daa8b90", "Dassault Falcon tri-jet on a snowy Alpine runway beneath the mountains", "Rafael Garcin", "Fz2Dx3k3eTY"),
     "cabin":     ("1768346564210-f382cdf18375", "Cream leather seats in a long-range jet cabin with soft cove lighting", "Andy Wang", "lU1pEjWZzXg"),
     "salon":     ("1768346564233-d71f37bd19b6", "Wide-body private cabin with lounge chairs and a credenza", "Andy Wang", "ogUyaf8JWA4"),
+    # Wikimedia Commons, CC BY-SA 4.0 (credited on /credits/)
+    "fo_seat":   ("commons:6/61/Gulfstream_G650ER%2C_EBACE_2018%2C_Le_Grand-Saconnex_%28BL7C0746%29.jpg", "Cream leather seat beside an oval window in a Gulfstream G650ER, walnut veneer and a crystal piece on the table", "Matti Blume, CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Gulfstream_G650ER,_EBACE_2018,_Le_Grand-Saconnex_(BL7C0746).jpg"),
+    "art_shelf": ("commons:4/42/Gulfstream_G650ER%2C_EBACE_2018%2C_Le_Grand-Saconnex_%28BL7C0758%29.jpg", "Walnut credenza by an oval window in a Gulfstream G650ER, with classic car books and a silver racing car sculpture", "Matti Blume, CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Gulfstream_G650ER,_EBACE_2018,_Le_Grand-Saconnex_(BL7C0758).jpg"),
     # Old-money interiors
     "library":   ("1637246662831-353bde8871e8", "Panelled private library with a chandelier and carved staircase", "Daniil Smetanin", "DAE--I2sJQI"),
     "salonroom": ("1716807335144-33e138f1858a", "Gilded drawing room with a marble statue by a tall window", "Hugo Richard", "P-cJjOSRWAI"),
@@ -202,7 +211,7 @@ pages.append(page("/", "SLG | Off Market Private Jet Advisory for Family Offices
 </section>
 
 <section class="rule-top"><div class="wrap section two">
-{photo("cabin", w=1600)}
+{photo("fo_seat", w=1600)}
 <div>
 <p class="label">For family offices</p>
 <h2 class="big mb-24">One adviser, for the aircraft and everything it carries.</h2>
@@ -227,7 +236,7 @@ JOURNAL_GRID
 ENTRIES = [
     ("inflight", "Market · September 2026", "G600 or Global 6500: reading the demand", "https://www.linkedin.com/feed/update/urn:li:activity:7506387098367832064/"),
     ("columns", "Sustainability · August 2026", "Five SAF developments in Europe this summer", "https://www.linkedin.com/feed/update/urn:li:activity:7490104204959576064/"),
-    ("salon", "Interiors", "The psychology of the cabin", "https://www.linkedin.com/feed/update/urn:li:activity:7467814737389645824/"),
+    ("art_shelf", "Interiors", "The psychology of the cabin", "https://www.linkedin.com/feed/update/urn:li:activity:7467814737389645824/"),
 ]
 def journal_grid():
     cards = []
@@ -590,14 +599,14 @@ pages.append(page("/accessibility/", "Accessibility | SLG", "SLG's commitment to
 
 # ---------------- CREDITS ----------------
 credit_rows = "".join(
-    f'<li>{alt} — <a href="https://unsplash.com/photos/{slug}" rel="noopener">{who}</a></li>'
+    f'<li>{alt} — <a href="{slug if slug.startswith("http") else "https://unsplash.com/photos/" + slug}" rel="noopener">{who}</a></li>'
     for (_pid, alt, who, slug) in PHOTOS.values())
 pages.append(page("/credits/", "Credits | SLG", "Photography credits.",
  f'''
 <section class="wrap section"><div class="prose">
 <p class="label">Credits</p>
 <h1 class="mb-48">Photography</h1>
-<p>Photographs are used under the Unsplash licence. With thanks to:</p>
+<p>Photographs are used under the Unsplash licence or Creative Commons licences as noted. With thanks to:</p>
 <ul>{credit_rows}</ul>
 </div></section>
 '''))
