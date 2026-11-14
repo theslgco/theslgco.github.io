@@ -229,9 +229,9 @@ p{margin:0}
 .s-nav button:hover:not(:disabled){border-color:var(--ink)}
 .s-nav button:disabled{opacity:.35;cursor:default}
 .s-nav button::before{content:'';position:absolute;left:50%;top:50%;width:16px;height:1px;background:currentColor;transform:translate(-50%,-50%)}
-.s-nav button::after{content:'';position:absolute;top:50%;width:7px;height:7px;border-top:1px solid currentColor}
-.s-next::after{left:calc(50% + 1px);border-right:1px solid currentColor;transform:translate(-100%,-50%) rotate(45deg)}
-.s-prev::after{left:calc(50% - 1px);border-left:1px solid currentColor;transform:translate(0,-50%) rotate(-45deg)}
+.s-nav button::after{content:'';position:absolute;top:calc(50% - 4px);width:7px;height:7px;border-top:1px solid currentColor}
+.s-next::after{left:calc(50% + 2px);border-right:1px solid currentColor;transform:rotate(45deg)}
+.s-prev::after{left:calc(50% - 9px);border-left:1px solid currentColor;transform:rotate(-45deg)}
 .s-track{list-style:none;margin:0;display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
   padding:0 max(var(--gutter),calc((100% - var(--max))/2 + var(--gutter)));scroll-padding-left:max(var(--gutter),calc((100% - var(--max))/2 + var(--gutter)))}
 .s-track::-webkit-scrollbar{display:none}
