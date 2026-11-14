@@ -17,6 +17,14 @@ def img(pid, w=2400):
         return f"https://upload.wikimedia.org/wikipedia/commons/thumb/{path}/{cw}px-{f}"
     return f"https://images.unsplash.com/photo-{pid}?w={w}&q=80&auto=format&fit=crop"
 
+import hashlib, urllib.parse
+def commons(fname):
+    f = fname.replace(" ", "_")
+    h = hashlib.md5(f.encode("utf-8")).hexdigest()
+    return f"commons:{h[0]}/{h[:2]}/{urllib.parse.quote(f)}"
+def commons_page(fname):
+    return "https://commons.wikimedia.org/wiki/File:" + urllib.parse.quote(fname.replace(" ", "_"))
+
 # Real photographs, Unsplash licence (free commercial use). Credits live on /credits/.
 PHOTOS = {
     # Large-cabin aircraft only (ultra-long-range / long-range / super-midsize). No light jets, no airline or military liveries.
@@ -29,6 +37,19 @@ PHOTOS = {
     # Wikimedia Commons, CC BY-SA 4.0 (credited on /credits/)
     "fo_seat":   ("commons:6/61/Gulfstream_G650ER%2C_EBACE_2018%2C_Le_Grand-Saconnex_%28BL7C0746%29.jpg", "Cream leather seat beside an oval window in a Gulfstream G650ER, walnut veneer and a crystal piece on the table", "Matti Blume, CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Gulfstream_G650ER,_EBACE_2018,_Le_Grand-Saconnex_(BL7C0746).jpg"),
     "art_shelf": ("commons:4/42/Gulfstream_G650ER%2C_EBACE_2018%2C_Le_Grand-Saconnex_%28BL7C0758%29.jpg", "Walnut credenza by an oval window in a Gulfstream G650ER, with classic car books and a silver racing car sculpture", "Matti Blume, CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Gulfstream_G650ER,_EBACE_2018,_Le_Grand-Saconnex_(BL7C0758).jpg"),
+    # The season (Charter page): Wikimedia Commons, credited on /credits/
+    "s_nov": (commons('LouvreAD cuneiform.jpg'), 'Under the latticed dome of the Louvre Abu Dhabi on Saadiyat Island', 'Boubloub, CC BY-SA 4.0', commons_page('LouvreAD cuneiform.jpg')),
+    "s_dec": (commons('Art Deco Cavalier Hotel Ocean Drive South Beach.jpg'), 'Art deco facade on Ocean Drive, Miami Beach', 'Phillip Pessar, CC BY 4.0', commons_page('Art Deco Cavalier Hotel Ocean Drive South Beach.jpg')),
+    "s_jan": (commons('Museum of Islamic Art, Doha 00 (48).JPG'), 'A single ceramic bowl under a spotlight at the Museum of Islamic Art, Doha', 'ولاء, CC BY-SA 4.0', commons_page('Museum of Islamic Art, Doha 00 (48).JPG')),
+    "s_feb": (commons('30th St. Moritz Polo World Cup on Snow - 20140201 - Cartier vs Ralph Lauren 6.jpg'), 'Horse and rider on the snow at St. Moritz', 'Clément Bucco-Lechat, CC BY-SA 3.0', commons_page('30th St. Moritz Polo World Cup on Snow - 20140201 - Cartier vs Ralph Lauren 6.jpg')),
+    "s_mar": (commons('A descriptive and illustrated catalogue of 150 paintings by old masters of the Dutch, Flemish, German, Italian, Spanish and French schools from the Kleinberger Galleries (1911) (14765213452).jpg'), 'Old master portraits from a 1911 gallery catalogue', 'Kleinberger Galleries catalogue (1911), no known copyright restrictions', commons_page('A descriptive and illustrated catalogue of 150 paintings by old masters of the Dutch, Flemish, German, Italian, Spanish and French schools from the Kleinberger Galleries (1911) (14765213452).jpg')),
+    "s_apr": (commons('2018 Monte-Carlo Masters IMG 2719 (41694885952).jpg'), 'Clay court at the Monte-Carlo Country Club', 'JC, CC BY-SA 2.0', commons_page('2018 Monte-Carlo Masters IMG 2719 (41694885952).jpg')),
+    "s_may": (commons("Lake Como - Villa d'Este.jpg"), "Villa d'Este on the shore of Lake Como", 'GhePeU, CC BY-SA 3.0', commons_page("Lake Como - Villa d'Este.jpg")),
+    "s_jun": (commons('Royal Ascot carriage procession (geograph 3517984).jpg'), 'The carriage procession at Royal Ascot', 'Alan Hunt, CC BY-SA 2.0', commons_page('Royal Ascot carriage procession (geograph 3517984).jpg')),
+    "s_jul": (commons('Wimbledon, Centre Court New.JPG'), 'Centre Court at Wimbledon', 'Marc Schulz, CC BY-SA 3.0', commons_page('Wimbledon, Centre Court New.JPG')),
+    "s_aug": (commons("Concours d'Elegance (20614363786).jpg"), "A prewar coupe on the lawn at a concours d'elegance", 'Jay Cross, CC BY 2.0', commons_page("Concours d'Elegance (20614363786).jpg")),
+    "s_sep": (commons('Nautilus 73-meter (239 ft) long motor yacht. Location Poole Quay. Dorset.jpg'), 'A white superyacht moored at the quay', 'J K Thorne, CC BY 4.0', commons_page('Nautilus 73-meter (239 ft) long motor yacht. Location Poole Quay. Dorset.jpg')),
+    "s_oct": (commons('La nef est à vous, Grand Palais, juin 2018 (13).jpg'), 'The glass nave of the Grand Palais, Paris', 'Ibex73, CC BY-SA 4.0', commons_page('La nef est à vous, Grand Palais, juin 2018 (13).jpg')),
     # Old-money interiors
     "library":   ("1637246662831-353bde8871e8", "Panelled private library with a chandelier and carved staircase", "Daniil Smetanin", "DAE--I2sJQI"),
     "salonroom": ("1716807335144-33e138f1858a", "Gilded drawing room with a marble statue by a tall window", "Hugo Richard", "P-cJjOSRWAI"),
@@ -477,6 +498,157 @@ pages.append(page("/sustainability/", "Sustainable Aviation Fuel (SAF) Advisory 
 </section>
 ''', current="/sustainability/", og="sculptroom"))
 
+# ---------------- THE SEASON (Charter page) ----------------
+# From the SLG Events & Content Calendar (Drive). Dates as published; tbc=True marks dates still to be confirmed.
+# Each month: (year, month, photo key, headline event, headline venue, intro, [(date, event, venue, note, tbc), ...])
+SEASON = [
+ ("2026","November","s_nov","Frieze Abu Dhabi","Manarat Al Saadiyat, Abu Dhabi",
+  "Frieze arrives in Abu Dhabi, and Formula 1 races under the lights of the Strip.",
+  [("11 Nov – 28 Feb","Art Here 2026: Confluences","Abu Dhabi","Contemporary art across the city through the winter.",False),
+   ("16 Nov – 16 Dec","Frieze Sculpture Abu Dhabi","Mamsha Beach, Abu Dhabi","Sculpture on the waterfront for a month.",False),
+   ("19–21 Nov","Las Vegas Grand Prix","The Strip, Las Vegas","Formula 1 at night through the city.",False),
+   ("19–22 Nov","Frieze Abu Dhabi","Manarat Al Saadiyat, Abu Dhabi","The fair formerly known as Abu Dhabi Art, now under Frieze.",False)]),
+ ("2026","December","s_dec","Art Basel Miami Beach","Miami Beach Convention Center",
+  "Miami for the fairs, Abu Dhabi for the finale, then the mountains and the islands for the holidays.",
+  [("4–6 Dec","Art Basel Miami Beach","Miami Beach Convention Center","VIP days on 2 and 3 December.",False),
+   ("4–6 Dec","Abu Dhabi Grand Prix","Yas Marina Circuit","The Formula 1 season finale.",False),
+   ("9–10 Dec","Sotheby's Collectors' Week","Saadiyat Grove, Abu Dhabi","Evening auctions in Abu Dhabi.",False),
+   ("11 Dec","Guggenheim Abu Dhabi opening","Saadiyat Cultural District","The museum opens its doors.",False),
+   ("20 Dec – 3 Jan","The festive season","St. Moritz and Gstaad","Christmas and New Year in the Swiss Alps.",False),
+   ("26 Dec – 2 Jan","New Year","Courchevel and St Barths","The two classic addresses for the turn of the year.",False)]),
+ ("2027","January","s_jan","Art Basel Qatar","Doha",
+  "Davos, the art fairs of Singapore and Doha, couture in Paris and polo on the frozen lake.",
+  [("18–22 Jan","World Economic Forum","Davos","The annual meeting in the Swiss Alps.",False),
+   ("22–24 Jan","ART SG","Marina Bay Sands, Singapore","Southeast Asia's leading art fair.",False),
+   ("25–28 Jan","Haute Couture Week","Paris","The spring couture collections.",True),
+   ("28–30 Jan","Art Basel Qatar","Doha","Previews on 26 and 27 January.",False),
+   ("29–31 Jan","Snow Polo World Cup","The frozen lake, St. Moritz","Polo on the ice of Lake St. Moritz.",True)]),
+ ("2027","February","s_feb","White Turf","The frozen lake, St. Moritz",
+  "Racing in Riyadh, then on the snow of the Engadin.",
+  [("5–6 Feb","Saudi Cup","King Abdulaziz Racecourse, Riyadh","One of the richest race meetings in the world.",False),
+   ("7–21 Feb","White Turf","The frozen lake, St. Moritz","Horse racing on the ice over three Sundays.",True)]),
+ ("2027","March","s_mar","TEFAF Maastricht","MECC Maastricht",
+  "Madrid, Maastricht and Hong Kong for the fairs, Meydan for the Dubai World Cup.",
+  [("3–7 Mar","ARCOmadrid","IFEMA, Madrid","Spain's contemporary art fair.",False),
+   ("13–18 Mar","TEFAF Maastricht","MECC Maastricht","Old masters, antiquities and fine art.",False),
+   ("25–27 Mar","Art Basel Hong Kong","Hong Kong Convention and Exhibition Centre","Asia's largest gathering of galleries.",False),
+   ("27 Mar","Dubai World Cup","Meydan Racecourse, Dubai","The richest night of racing in the Gulf.",True),
+   ("31 Mar – 4 Apr","PAD Paris","Jardin des Tuileries","Design and decorative arts.",False)]),
+ ("2027","April","s_apr","Rolex Monte-Carlo Masters","Monte-Carlo Country Club",
+  "Clay in Monte Carlo, watches in Geneva, design in Milan and the green jacket in Augusta.",
+  [("4–11 Apr","Rolex Monte-Carlo Masters","Monte-Carlo Country Club","Tennis above the sea.",True),
+   ("7–11 Apr","Art Dubai","Madinat Jumeirah, Dubai","The Gulf's longest running art fair.",True),
+   ("8–11 Apr","The Masters","Augusta National Golf Club","The first major of the golf year.",True),
+   ("13–18 Apr","Salone del Mobile","Rho Fiera, Milan","Milan Design Week.",False),
+   ("13–19 Apr","Watches and Wonders","Palexpo, Geneva","The year's new watches, in Geneva.",True),
+   ("30 Apr – 2 May","Miami Grand Prix","Miami International Autodrome","Formula 1 in Miami.",False)]),
+ ("2027","May","s_may","Concorso d'Eleganza Villa d'Este","Cernobbio, Lake Como",
+  "Cannes, the Armory in New York and the concours on Lake Como.",
+  [("11–22 May","Festival de Cannes","Palais des Festivals, Cannes","The film festival on the Croisette.",True),
+   ("14–18 May","TEFAF New York","Park Avenue Armory","Fine and decorative art in New York.",False),
+   ("21–23 May","Concorso d'Eleganza Villa d'Este","Cernobbio, Lake Como","Classic cars in the gardens of Villa d'Este.",True),
+   ("23 May – 6 Jun","Roland-Garros","Paris","The French Open.",True)]),
+ ("2027","June","s_jun","Royal Ascot","Ascot Racecourse",
+  "Monaco, Royal Ascot and Art Basel: the fullest weeks of the European season.",
+  [("4–6 Jun","Monaco Grand Prix","Circuit de Monaco","Formula 1 through the streets of Monte Carlo.",False),
+   ("12–13 Jun","24 Hours of Le Mans","Circuit de la Sarthe","Endurance racing through the night.",True),
+   ("12 Jun – 19 Sep","documenta 16","Kassel","The exhibition held every five years.",True),
+   ("15–19 Jun","Royal Ascot","Ascot Racecourse","Five days of racing and the carriage procession.",True),
+   ("17–20 Jun","Art Basel","Messe Basel","The original Art Basel.",False)]),
+ ("2027","July","s_jul","Wimbledon","The All England Club, London",
+  "Wimbledon, Silverstone and Goodwood, then summer moves to the Hamptons and the Mediterranean.",
+  [("28 Jun – 11 Jul","Wimbledon","The All England Club, London","The Championships on grass.",True),
+   ("1 Jul – 6 Sep","The Hamptons season","Long Island, New York","Summer on the East End.",False),
+   ("2–4 Jul","British Grand Prix","Silverstone Circuit","Formula 1 at Silverstone.",False),
+   ("5–8 Jul","Haute Couture Week","Paris","The autumn couture collections.",True),
+   ("8–11 Jul","Goodwood Festival of Speed","Goodwood House, West Sussex","Motoring on the hill at Goodwood.",True),
+   ("15 Jul – 31 Aug","The Mediterranean summer","Bodrum, Mykonos, Saint-Tropez, Sardinia","The peak weeks on the water.",False)]),
+ ("2027","August","s_aug","Pebble Beach Concours d'Elegance","Pebble Beach Golf Links",
+  "Classic cars by the Pacific and polo in the Saanenland.",
+  [("15 Aug","Pebble Beach Concours d'Elegance","Pebble Beach Golf Links, California","The concours on the eighteenth fairway.",True),
+   ("19–22 Aug","Hublot Polo Gold Cup","Gstaad","Summer polo in the Saanenland.",True)]),
+ ("2027","September","s_sep","Monaco Yacht Show","Port Hercule, Monaco",
+  "Venice and Monza, then the yachting weeks of Cannes and Monaco.",
+  [("1–11 Sep","Venice Film Festival","Lido di Venezia","The oldest film festival in the world.",True),
+   ("3–5 Sep","Italian Grand Prix","Autodromo Nazionale Monza","Formula 1 at Monza.",False),
+   ("7–12 Sep","Cannes Yachting Festival","Vieux Port, Cannes","Yachts on the water in Cannes.",True),
+   ("22–25 Sep","Monaco Yacht Show","Port Hercule, Monaco","The superyacht show in Monaco.",True)]),
+ ("2027","October","s_oct","Art Basel Paris","Grand Palais, Paris",
+  "Istanbul and Singapore under the lights, then Frieze in London and Art Basel under the glass of the Grand Palais.",
+  [("1–3 Oct","Turkish Grand Prix","Istanbul Park","Formula 1 returns to Istanbul.",False),
+   ("8–10 Oct","Singapore Grand Prix","Marina Bay Street Circuit","Formula 1 at night in Singapore.",False),
+   ("13–17 Oct","Frieze London and Frieze Masters","The Regent's Park, London","Contemporary art and the old masters side by side.",True),
+   ("22–24 Oct","Art Basel Paris","Grand Palais, Paris","The fair under the glass nave.",True)]),
+]
+
+from html import escape as _e
+from urllib.parse import quote as _q
+
+SEASON_JS = """
+(function(){
+var t=document.querySelector('.s-track'),pv=document.querySelector('.s-prev'),nx=document.querySelector('.s-next');
+if(!t)return;
+function step(){var c=t.querySelector('.s-card');return c?c.getBoundingClientRect().width+24:400;}
+function upd(){pv.disabled=t.scrollLeft<8;nx.disabled=t.scrollLeft+t.clientWidth>t.scrollWidth-8;}
+var sm=window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
+pv.addEventListener('click',function(){t.scrollBy({left:-step()*2,behavior:sm});});
+nx.addEventListener('click',function(){t.scrollBy({left:step()*2,behavior:sm});});
+t.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd();
+document.querySelectorAll('.s-open').forEach(function(b){b.addEventListener('click',function(){
+ var d=document.getElementById(b.dataset.panel);if(!d||!d.showModal)return;
+ d.showModal();d.scrollTop=0;document.documentElement.classList.add('s-lock');
+});});
+document.querySelectorAll('.s-panel').forEach(function(d){
+ d.querySelector('.s-close').addEventListener('click',function(){d.close();});
+ d.addEventListener('click',function(e){if(e.target===d)d.close();});
+ d.addEventListener('close',function(){document.documentElement.classList.remove('s-lock');});
+});
+})();
+"""
+
+def season_section():
+    cards, panels = [], []
+    for i, (year, month, key, head, venue, intro, events) in enumerate(SEASON):
+        pid, alt, *_ = PHOTOS[key]
+        n = len(events)
+        cards.append(
+            f'<li class="s-card"><button type="button" class="s-open" data-panel="season-{i}" aria-haspopup="dialog">'
+            f'<img src="{img(pid, 1280)}" alt="{_e(alt)}" loading="lazy" decoding="async">'
+            f'<span class="s-year">{year}</span>'
+            f'<span class="s-body"><span class="s-month">{month}</span><span class="s-head">{_e(head)}</span>'
+            f'<span class="s-venue">{_e(venue)}</span>'
+            f'<span class="s-foot"><span>{n} events</span><span class="s-arrow" aria-hidden="true"></span></span></span>'
+            f'</button></li>')
+        rows = []
+        for (d, name, ven, note, tbc) in events:
+            t = '<span class="s-tbc">to be confirmed</span>' if tbc else ''
+            q = _q(f"{name} ({d} {year})")
+            rows.append(
+                f'<li><p class="s-date">{d}{t}</p>'
+                f'<div><h4>{_e(name)}</h4><p class="s-ven">{_e(ven)}</p><p class="s-note">{_e(note)}</p></div>'
+                f'<a class="s-enq" href="/enquire/?intent=charter&amp;event={q}">Enquire</a></li>')
+        panels.append(
+            f'<dialog class="s-panel" id="season-{i}" aria-label="{month} {year}">'
+            f'<div class="s-bar"><p>{month} {year}</p><button type="button" class="s-close" aria-label="Close {month}"></button></div>'
+            f'<div class="s-grid"><div class="s-img"><img src="{img(pid, 1920)}" alt="{_e(alt)}" loading="lazy" decoding="async"></div>'
+            f'<div class="s-text"><p class="label">The season</p><h3>{month}</h3><p class="s-intro">{_e(intro)}</p>'
+            f'<ul class="s-list">{"".join(rows)}</ul></div></div></dialog>')
+    return (
+        '<section class="season rule-top" id="season" aria-labelledby="season-title">\n'
+        '<div class="wrap s-top">\n'
+        '<div><p class="label">The season</p><h2 class="big" id="season-title">Where the world gathers, <span class="it">month by month.</span></h2></div>\n'
+        '<div class="s-aside"><p class="body">The races, fairs and festivals our clients travel for. Choose a month to see what it holds: we arrange the aircraft around any of them.</p>\n'
+        '<div class="s-nav"><button type="button" class="s-prev" aria-label="Previous months" disabled></button>'
+        '<button type="button" class="s-next" aria-label="Next months"></button></div></div>\n'
+        '</div>\n'
+        f'<ul class="s-track" aria-label="Months">{"".join(cards)}</ul>\n'
+        '<p class="wrap small s-fine">Dates as published by the organisers. Some are still to be confirmed.</p>\n'
+        f'{"".join(panels)}\n'
+        f'<script>{SEASON_JS}</script>\n'
+        '</section>')
+
+season_html = season_section()
+
 # ---------------- CHARTER ----------------
 pages.append(page("/charter/", "Private Jet Charter for Principals and Family Offices | SLG",
  "Private jet charter arranged discreetly for principals, families and executives, from the season's events to board meetings. Vetted operators only.",
@@ -507,6 +679,7 @@ pages.append(page("/charter/", "Private Jet Charter for Principals and Family Of
 </ul>
 </div>
 </div></section>
+{season_html}
 <section class="section center wrap">
 <h2 class="big mb-24">Tell us where, and when.</h2>
 <p class="body mb-48">A quotation follows the same day for most itineraries.</p>
@@ -549,7 +722,7 @@ pages.append(page("/enquire/", "Enquire | SLG Private Aviation Advisory",
 </form>
 </section>
 <script>
-(function(){{var p=new URLSearchParams(location.search).get('intent');if(!p)return;var m={{charter:'Charter',sell:'Sell',art:'Art',briefing:'Briefing',acquire:'Acquire'}};var v=m[p.toLowerCase()];if(!v)return;var r=document.querySelector('input[name=intent][value="'+v+'"]');if(r)r.checked=true;}})();
+(function(){{var p=new URLSearchParams(location.search).get('intent');if(!p)return;var m={{charter:'Charter',sell:'Sell',art:'Art',briefing:'Briefing',acquire:'Acquire'}};var v=m[p.toLowerCase()];if(!v)return;var r=document.querySelector('input[name=intent][value="'+v+'"]');if(r)r.checked=true;var ev=new URLSearchParams(location.search).get('event');var ta=document.querySelector('textarea[name=message]');if(ev&&ta&&!ta.value)ta.value='Charter for '+ev+'.';}})();
 </script>
 ''', current="/enquire/", og="cabin"))
 

@@ -62,7 +62,7 @@
 </form>
 </section>
 <script>
-(function(){var p=new URLSearchParams(location.search).get('intent');if(!p)return;var m={charter:'Charter',sell:'Sell',art:'Art',briefing:'Briefing',acquire:'Acquire'};var v=m[p.toLowerCase()];if(!v)return;var r=document.querySelector('input[name=intent][value="'+v+'"]');if(r)r.checked=true;})();
+(function(){var p=new URLSearchParams(location.search).get('intent');if(!p)return;var m={charter:'Charter',sell:'Sell',art:'Art',briefing:'Briefing',acquire:'Acquire'};var v=m[p.toLowerCase()];if(!v)return;var r=document.querySelector('input[name=intent][value="'+v+'"]');if(r)r.checked=true;var ev=new URLSearchParams(location.search).get('event');var ta=document.querySelector('textarea[name=message]');if(ev&&ta&&!ta.value)ta.value='Charter for '+ev+'.';})();
 </script>
 </main>
 <footer class="site-footer">
