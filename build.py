@@ -192,7 +192,6 @@ pages.append(page("/", "SLG | Off Market Private Jet Advisory for Family Offices
 <a class="link" href="/private-register/">Request access</a>
 </div>
 <div class="register-teaser">
-<div class="row"><span class="cat">Global 7500</span><span class="meta">2023 · under 700 hours</span></div>
 <div class="row"><span class="cat">G650ER</span><span class="meta">2019 · three zones</span></div>
 <div class="row"><span class="cat">G650ER</span><span class="meta">2017 · Block 3</span></div>
 <div class="row"><span class="cat">Falcon 2000LXS</span><span class="meta">2022 · one owner</span></div>
@@ -266,7 +265,6 @@ pages.append(page("/journal/", "Journal | SLG Private Aviation Advisory",
 # Off market sale only. Mirrors active Sale rows of Master CRM > Deals.
 # (Category, Model, Year, Profile). Never publish prices, serials, seller names or location (released after LOI).
 REGISTER = [
-    ("Ultra-long-range", "Bombardier Global 7500", "2023", "Under 700 hours · 36-month inspection July 2026"),
     ("Ultra-long-range", "Gulfstream G650ER", "2019", "2,000 hours · HUD · Ka-band · 13 seats, three zones"),
     ("Ultra-long-range", "Gulfstream G650ER", "2017", "Under 1,700 hours · Block 3 · Ka-band · 14 seats"),
     ("Large cabin", "Dassault Falcon 2000LXS", "2022", "One owner since new · hangared · Ka-band · 10 seats"),
@@ -277,6 +275,8 @@ rows = "".join(f"<tr><td>{a}</td><td>{m}</td><td>{b}</td><td>{c}</td></tr>" for 
 # Mirrors Acquisition rows of Master CRM > Deals: what our buyers are looking for.
 # (Category, Model, Year, Requirement)
 WANTED = [
+    ("Ultra-long-range", "Bombardier Global 5500 / 6500 / 7500 / 8000", "In service 2020 or later", "For a principal · under 3,500 hours · on programmes"),
+    ("Ultra-long-range", "Gulfstream G550", "2017 to 2019", "For a principal"),
     ("Long-range", "Bombardier Global XRS", "Any", "For a principal"),
     ("Large cabin", "Bombardier Challenger 605", "2015 or newer", "Two principals"),
     ("Large cabin", "Embraer Legacy 650", "2014 or newer", "For a principal"),
