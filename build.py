@@ -50,6 +50,8 @@ PHOTOS = {
     "s_aug": (commons("Concours d'Elegance (20614363786).jpg"), "A prewar coupe on the lawn at a concours d'elegance", 'Jay Cross, CC BY 2.0', commons_page("Concours d'Elegance (20614363786).jpg")),
     "s_sep": (commons('Nautilus 73-meter (239 ft) long motor yacht. Location Poole Quay. Dorset.jpg'), 'A white superyacht moored at the quay', 'J K Thorne, CC BY 4.0', commons_page('Nautilus 73-meter (239 ft) long motor yacht. Location Poole Quay. Dorset.jpg')),
     "s_oct": (commons('La nef est à vous, Grand Palais, juin 2018 (13).jpg'), 'The glass nave of the Grand Palais, Paris', 'Ibex73, CC BY-SA 4.0', commons_page('La nef est à vous, Grand Palais, juin 2018 (13).jpg')),
+    "s_nov27": (commons('Emirates Palace @ Abu Dhabi (15424392073).jpg'), 'The colonnade of Emirates Palace, Abu Dhabi', 'Guilhem Vellut, CC BY 2.0', commons_page('Emirates Palace @ Abu Dhabi (15424392073).jpg')),
+    "s_dec27": (commons('St. Moritz - Badrutt’s Palace (15885656269).jpg'), "Badrutt's Palace, St. Moritz, on a winter night", 'Kecko, CC BY 2.0', commons_page('St. Moritz - Badrutt’s Palace (15885656269).jpg')),
     # Old-money interiors
     "library":   ("1637246662831-353bde8871e8", "Panelled private library with a chandelier and carved staircase", "Daniil Smetanin", "DAE--I2sJQI"),
     "salonroom": ("1716807335144-33e138f1858a", "Gilded drawing room with a marble statue by a tall window", "Hugo Richard", "P-cJjOSRWAI"),
@@ -579,6 +581,15 @@ SEASON = [
    ("8–10 Oct","Singapore Grand Prix","Marina Bay Street Circuit","Formula 1 at night in Singapore.",False),
    ("13–17 Oct","Frieze London and Frieze Masters","The Regent's Park, London","Contemporary art and the old masters side by side.",True),
    ("22–24 Oct","Art Basel Paris","Grand Palais, Paris","The fair under the glass nave.",True)]),
+ ("2027","November","s_nov27","Frieze Abu Dhabi","Manarat Al Saadiyat, Abu Dhabi",
+  "The second Frieze on Saadiyat, and Formula 1 once more down the Strip.",
+  [("17–21 Nov","Frieze Abu Dhabi","Manarat Al Saadiyat, Abu Dhabi","The fair returns to Saadiyat for its second edition under Frieze.",True),
+   ("18–20 Nov","Las Vegas Grand Prix","The Strip, Las Vegas","Formula 1 at night through the city, racing on Saturday.",False)]),
+ ("2027","December","s_dec27","The festive season","St. Moritz and Gstaad",
+  "Miami for the fairs, Yas Marina for the finale, then the Engadin and the Saanenland for the holidays.",
+  [("2–5 Dec","Art Basel Miami Beach","Miami Beach Convention Center","The fair that closes the art year.",True),
+   ("10–12 Dec","Abu Dhabi Grand Prix","Yas Marina Circuit","The Formula 1 season finale.",False),
+   ("20 Dec – 3 Jan","The festive season","St. Moritz and Gstaad","Christmas and New Year in the Swiss Alps.",False)]),
 ]
 
 from html import escape as _e
